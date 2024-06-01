@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to VitalTrack</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('static/images/old.jpg'); /* Adjust the path to your background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Ensures the background image stays fixed while scrolling */
+            color: #fff;
+            text-align: center;
+            position: relative; /* Needed for absolute positioning of the quote */
+            min-height: 100vh; /* Ensures the background covers the full viewport height */
+        }
+
+        .welcome-box {
+            position: absolute;
+            top: 20%;
+            left: 20px;
+            background-color: #fff;
+            border-radius: 6px;
+            padding: 50px;
+            animation: slideIn 2s linear;
+            color: #000; /* Change text color to black */
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-600px);
+            }
+        }
+
+        .buttons-container {
+            position: absolute;
+            top: 65%; /* Adjusted to move the buttons further down */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            gap: 40px; /* Increased space between buttons */
+        }
+
+        .button {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            border-radius: 10px;
+            color: #fff;
+            padding: 20px 40px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s, transform 0.3s;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Animation for the quote */
+        .quote {
+            position: absolute;
+            bottom: 20px; /* Adjust the distance from the bottom */
+            right: 0;
+            width: 100%;
+            animation: translateQuote 10s linear infinite alternate; /* Adjust the duration and timing */
+        }
+
+        /* Keyframes for the animation */
+        @keyframes translateQuote {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(0%);
+            }
+        }
+
+        /* Keyframes for dynamic border color change */
+        @keyframes borderColorChange {
+            0% { 
+                border: 5px solid red;
+                box-shadow: 0 0 15px red;
+            }
+            25% { 
+                border: 5px solid blue;
+                box-shadow: 0 0 15px blue;
+            }
+            50% { 
+                border: 5px solid green;
+                box-shadow: 0 0 15px green;
+            }
+            75% { 
+                border: 5px solid yellow;
+                box-shadow: 0 0 15px yellow;
+            }
+            100% { 
+                border: 5px solid purple;
+                box-shadow: 0 0 15px purple;
+            }
+        }
+
+        /* Style for the quote text */
+        .quote p {
+            font-size: 28px; /* Adjust the font size */
+        }
+    </style>
+</head>
+<body>
+    <div class="welcome-box">
+        <h1>Welcome to VitalTrack</h1>
+        <p>Empowering you to monitor your health</p>
+    </div>
+    
+
+    <div class="buttons-container">
+        <a href="{{ url_for('about') }}" class="button">About VitalTrack</a>
+        <a href="{{ url_for('view_data') }}" class="button">View Data</a>
+        <a href="{{ url_for('other') }}" class="button">Other</a>
+    </div>
+
+    <!-- Quote element -->
+    <div class="quote">
+        <p>"Take care of your body. It's the only place you have to live." - Jim Rohn</p>
+    </div>
+</body>
+</html>
